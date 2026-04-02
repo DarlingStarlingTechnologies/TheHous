@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hous of The Darling Starling
+
+The first live public home of **Hous of The Darling Starling** — a living creative universe, arriving.
+
+This is a temporary but real web presence deployed at [housofthedarlingstarling.com](https://housofthedarlingstarling.com), combining a public landing experience with a secure private owner portal.
+
+## Stack
+
+- **Next.js 16** (App Router, TypeScript)
+- **Tailwind CSS v4**
+- **Prisma v7** + SQLite (with `better-sqlite3` adapter)
+- **NextAuth v5** (credentials provider, JWT sessions)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Set up environment
+cp .env.example .env
+# Edit .env with your values
+
+# Generate a password hash
+node -e "console.log(require('bcryptjs').hashSync('your-password', 12))"
+
+# Run database migration
+npx prisma migrate dev
+
+# Seed example data
+npm run db:seed
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) for the public landing page.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Navigate to [http://localhost:3000/login](http://localhost:3000/login) for the owner portal.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Default credentials:** `owner@housofthedarlingstarling.com` / `changeme`
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/
+    page.tsx                  # Public landing page
+    login/page.tsx            # Owner login
+    portal/                   # Private owner portal
+      page.tsx                # Dashboard
+      projects/page.tsx       # Project management
+      legal/page.tsx          # Legal/formation tracking
+      financial/page.tsx      # Financial tracking
+      bookings/page.tsx       # Booking management
+    api/                      # REST API routes
+  components/portal/          # Portal UI components
+  lib/
+    auth.ts                   # NextAuth configuration
+    prisma.ts                 # Database client
+prisma/
+  schema.prisma               # Database schema
+  seed.js                     # Seed script
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Designed for **Vercel** deployment:
 
-## Deploy on Vercel
+1. Push to a Git repository
+2. Import in Vercel
+3. Set environment variables (see `.env.example`)
+4. For production, switch `DATABASE_URL` to a hosted database (e.g., Turso, PlanetScale)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run db:seed` | Seed example data |
+| `npm run db:studio` | Open Prisma Studio |

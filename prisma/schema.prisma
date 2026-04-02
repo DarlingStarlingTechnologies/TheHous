@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Project {
+  id         String    @id @default(cuid())
+  title      String
+  status     String    @default("active")
+  priority   String    @default("medium")
+  notes      String?
+  dueDate    DateTime?
+  nextAction String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model LegalItem {
+  id          String    @id @default(cuid())
+  title       String
+  type        String    @default("other")
+  status      String    @default("pending")
+  deadline    DateTime?
+  notes       String?
+  documentRef String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model FinancialItem {
+  id        String    @id @default(cuid())
+  title     String
+  category  String    @default("expense")
+  status    String    @default("active")
+  amount    Float?
+  frequency String?
+  notes     String?
+  dueDate   DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  image     String?
+  status    String   @default("pending")
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContactInquiry {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  inquiryType String
+  message     String?
+  details     String?
+  status      String   @default("new")
+  createdAt   DateTime @default(now())
+}
+
+model Booking {
+  id        String    @id @default(cuid())
+  title     String
+  dateTime  DateTime
+  endTime   DateTime?
+  location  String?
+  status    String    @default("confirmed")
+  notes     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}

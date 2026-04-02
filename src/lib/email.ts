@@ -1,0 +1,27 @@
+import sgMail from "@sendgrid/mail";
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
+
+interface EmailOptions {
+  to: string | string[];
+  subject: string;
+  html: string;
+  cc?: string[];
+  bcc?: string[];
+}
+
+export async function sendEmail(options: EmailOptions) {
+  const msg = {
+    to: options.to,
+    from: {
+      email: process.env.SENDGRID_FROM_EMAIL!,
+      name: process.env.SENDGRID_FROM_NAME || "Hous of The Darling Starling",
+    },
+    subject: options.subject,
+    html: options.html,
+    ...(options.cc?.length && { cc: options.cc }),
+    ...(options.bcc?.length && { bcc: options.bcc }),
+  };
+
+  await sgMail.send(msg);
+}

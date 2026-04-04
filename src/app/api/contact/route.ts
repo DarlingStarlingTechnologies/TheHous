@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
     // Send notification email
     try {
       await sendEmail({
-        to: "inquiry@housofthedarlingstarling.com",
+        to: "asglines@gmail.com",
         subject: `New Inquiry: ${inquiryType} — ${cleanName}`,
         html: contactInquiryEmail({
           name: cleanName,
@@ -110,8 +110,12 @@ export async function POST(request: NextRequest) {
           details: cleanDetails,
         }),
       });
-    } catch (emailError) {
+    } catch (emailError: unknown) {
+      const err = emailError as { response?: { body?: unknown } };
       console.error("[API] Contact notification email failed:", emailError);
+      if (err.response?.body) {
+        console.error("[API] SendGrid error body:", JSON.stringify(err.response.body));
+      }
     }
 
     return NextResponse.json({ id: inquiry.id }, { status: 201 });

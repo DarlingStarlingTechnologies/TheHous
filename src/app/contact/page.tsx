@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ContactForm from "@/components/ContactForm";
+// import ContactForm from "@/components/ContactForm"; // TODO: re-enable after SendGrid verification
 
 export const metadata = {
   title: "Inquiries — Hous of The Darling Starling",
@@ -37,7 +37,13 @@ export default function ContactPage() {
               being built here, you are welcome to reach out.
             </p>
           </div>
-          <ContactForm />
+          {/* TODO: Re-enable ContactForm once SendGrid account is verified */}
+          <div className="bg-bg-card border border-border rounded-lg p-8 text-center">
+            <p className="text-cream text-lg font-serif mb-3">Inquiries are temporarily unavailable</p>
+            <p className="text-cream-dim text-sm leading-relaxed">
+              We are setting up our communication channels. Please check back soon, or reach out directly at your convenience.
+            </p>
+          </div>
         </div>
       </main>
 

@@ -1,3 +1,108 @@
+export function contactInquiryEmail(inquiry: {
+  name: string;
+  email: string;
+  inquiryType: string;
+  message: string | null;
+  details: string | null;
+}): string {
+  const typeLabels: Record<string, string> = {
+    "collaboration": "Collaboration",
+    "software-development": "Software Development",
+    "booking-talent": "Booking Talent",
+    "ecosystem-tools": "Ecosystem Tools",
+  };
+  const typeLabel = typeLabels[inquiry.inquiryType] || inquiry.inquiryType;
+
+  let detailsHtml = "";
+  if (inquiry.details) {
+    try {
+      const parsed = JSON.parse(inquiry.details);
+      detailsHtml = Object.entries(parsed)
+        .map(([key, val]) => `<p style="margin: 0 0 8px; color: #9a9080; font-size: 14px;"><strong style="color: #e8dcc8;">${key}:</strong> ${val}</p>`)
+        .join("");
+    } catch { /* ignore */ }
+  }
+
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Inquiry</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #080808; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #080808;">
+    <tr>
+      <td align="center" style="padding: 40px 20px;">
+        <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width: 560px; width: 100%;">
+
+          <!-- Logo -->
+          <tr>
+            <td align="center" style="padding-bottom: 32px;">
+              <img src="https://housofthedarlingstarling.com/logo.png" alt="Hous of The Darling Starling" width="72" height="72" style="display: block; border: 0;" />
+            </td>
+          </tr>
+
+          <!-- Header -->
+          <tr>
+            <td align="center" style="padding-bottom: 8px;">
+              <h1 style="margin: 0; font-family: 'Georgia', 'Times New Roman', serif; font-size: 28px; font-weight: 300; color: #f5f0e8; letter-spacing: 1px;">
+                New Inquiry
+              </h1>
+            </td>
+          </tr>
+
+          <!-- Ornament -->
+          <tr>
+            <td align="center" style="padding: 16px 0 24px;">
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="width: 48px; height: 1px; background: linear-gradient(to right, transparent, #8b7535);"></td>
+                  <td style="padding: 0 12px; color: #8b7535; font-size: 10px;">&#10022;</td>
+                  <td style="width: 48px; height: 1px; background: linear-gradient(to left, transparent, #8b7535);"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Body Card -->
+          <tr>
+            <td>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #141414; border: 1px solid #222222; border-radius: 8px;">
+                <tr>
+                  <td style="padding: 36px 32px;">
+                    <p style="margin: 0 0 8px; color: #9a9080; font-size: 14px;"><strong style="color: #e8dcc8;">Type:</strong> ${typeLabel}</p>
+                    <p style="margin: 0 0 8px; color: #9a9080; font-size: 14px;"><strong style="color: #e8dcc8;">Name:</strong> ${inquiry.name}</p>
+                    <p style="margin: 0 0 8px; color: #9a9080; font-size: 14px;"><strong style="color: #e8dcc8;">Email:</strong> <a href="mailto:${inquiry.email}" style="color: #c9a84c; text-decoration: none;">${inquiry.email}</a></p>
+                    ${detailsHtml ? `<div style="margin: 16px 0; padding-top: 16px; border-top: 1px solid #222222;">${detailsHtml}</div>` : ""}
+                    ${inquiry.message ? `<div style="margin: 16px 0; padding-top: 16px; border-top: 1px solid #222222;"><p style="margin: 0; color: #9a9080; font-size: 14px; line-height: 1.7;">${inquiry.message}</p></div>` : ""}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td align="center" style="padding-top: 32px;">
+              <p style="margin: 0 0 6px; color: #9a908060; font-size: 12px; font-family: 'Georgia', 'Times New Roman', serif;">
+                Hous of The Darling Starling LLC
+              </p>
+              <p style="margin: 0 0 16px; color: #9a908040; font-size: 11px;">
+                housofthedarlingstarling.com
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
 export function welcomeEmail(userName: string | null): string {
   const name = userName || "there";
 

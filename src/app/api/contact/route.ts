@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { sendEmail } from "@/lib/email";
+import { contactInquiryEmail } from "@/lib/email-templates";
 
 const VALID_TYPES = ["collaboration", "software-development", "booking-talent", "ecosystem-tools"];
 
@@ -94,6 +96,23 @@ export async function POST(request: NextRequest) {
         details: cleanDetails,
       },
     });
+
+    // Send notification email
+    try {
+      await sendEmail({
+        to: "inquiry@housofthedarlingstarling.com",
+        subject: `New Inquiry: ${inquiryType} — ${cleanName}`,
+        html: contactInquiryEmail({
+          name: cleanName,
+          email: email.trim().toLowerCase(),
+          inquiryType,
+          message: cleanMessage,
+          details: cleanDetails,
+        }),
+      });
+    } catch (emailError) {
+      console.error("[API] Contact notification email failed:", emailError);
+    }
 
     return NextResponse.json({ id: inquiry.id }, { status: 201 });
   } catch (error) {

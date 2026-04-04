@@ -84,15 +84,20 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  const inquiry = await prisma.contactInquiry.create({
-    data: {
-      name: cleanName,
-      email: email.trim().toLowerCase(),
-      inquiryType,
-      message: cleanMessage,
-      details: cleanDetails,
-    },
-  });
+  try {
+    const inquiry = await prisma.contactInquiry.create({
+      data: {
+        name: cleanName,
+        email: email.trim().toLowerCase(),
+        inquiryType,
+        message: cleanMessage,
+        details: cleanDetails,
+      },
+    });
 
-  return NextResponse.json({ id: inquiry.id }, { status: 201 });
+    return NextResponse.json({ id: inquiry.id }, { status: 201 });
+  } catch (error) {
+    console.error("[API] POST /api/contact failed:", error);
+    return NextResponse.json({ error: "Failed to submit inquiry" }, { status: 500 });
+  }
 }

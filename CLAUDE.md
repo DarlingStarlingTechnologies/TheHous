@@ -8,7 +8,7 @@ The first live hosted version of **Hous of The Darling Starling** for `housofthe
 
 - **Next.js 16** (App Router, TypeScript, Turbopack dev)
 - **Tailwind CSS v4** (configured in `globals.css` via `@theme inline`)
-- **Prisma v7** + SQLite via `@prisma/adapter-better-sqlite3`
+- **Prisma v7** + PostgreSQL via `@prisma/adapter-neon` + `@neondatabase/serverless`
 - **NextAuth v5 beta** (Google OAuth + admin credentials, JWT sessions)
 - **SendGrid** (`@sendgrid/mail`) for transactional email
 - Target deployment: **Vercel**
@@ -65,9 +65,9 @@ Protected by NextAuth. Server-side approval check in `portal/layout.tsx`. Pages:
 ### Database
 - Prisma v7 with `prisma-client` generator, outputs to `src/generated/prisma/`
 - Import PrismaClient from `@/generated/prisma/client`
-- Requires `PrismaBetterSqlite3` adapter (see `src/lib/prisma.ts`)
-- SQLite file lives at project root (`dev.db`), NOT in `prisma/` dir
-- Seed script is plain JS (`prisma/seed.js`) using `better-sqlite3` directly
+- Requires `PrismaNeon` adapter with `@neondatabase/serverless` Pool (see `src/lib/prisma.ts`)
+- Database hosted on Neon Postgres — connection string in `DATABASE_URL`
+- Seed script is ESM (`prisma/seed.mjs`) using `@neondatabase/serverless` directly
 - Models: Project, LegalItem, FinancialItem, Booking, ContactInquiry, User
 
 ## Design System
@@ -82,7 +82,7 @@ Protected by NextAuth. Server-side approval check in `portal/layout.tsx`. Pages:
 ## Key Gotchas
 
 - `.env` values with `$` (like bcrypt hashes) get expanded by dotenv. Use single quotes or avoid `$` in env values.
-- Prisma v7 `prisma-client` generator outputs ESM TypeScript — works with Next.js bundler but not with `tsx` or plain `node` for standalone scripts. Use `better-sqlite3` directly for seed/scripts.
+- Prisma v7 `prisma-client` generator outputs ESM TypeScript — works with Next.js bundler but not with `tsx` or plain `node` for standalone scripts. Use `@neondatabase/serverless` directly for seed/scripts.
 - Auth config MUST be split into edge-safe (`auth.config.ts`) and full (`auth.ts`) — importing Prisma in middleware causes Edge Runtime errors.
 - The `middleware.ts` convention is deprecated in Next.js 16 (replaced by `proxy.ts`) but still works. Migration not urgent.
 - Anastasia's photo has a large wig — face detection / `object-top` positioning won't find her face correctly. Use `object-[center_20%]` or similar manual positioning.
@@ -131,7 +131,7 @@ src/
   middleware.ts                 # Route protection (edge-safe)
 prisma/
   schema.prisma                 # DB schema
-  seed.js                       # Seed script (plain JS, better-sqlite3)
+  seed.mjs                      # Seed script (ESM, @neondatabase/serverless)
 public/
   logo.png                      # Starling logo
   hous-hero.png                 # Landing page hero image

@@ -1,6 +1,8 @@
 import sgMail from "@sendgrid/mail";
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
+if (process.env.SENDGRID_API_KEY) {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+}
 
 interface EmailOptions {
   to: string | string[];
@@ -11,6 +13,10 @@ interface EmailOptions {
 }
 
 export async function sendEmail(options: EmailOptions) {
+  if (!process.env.SENDGRID_API_KEY) {
+    throw new Error("SENDGRID_API_KEY is not configured");
+  }
+
   const msg = {
     to: options.to,
     from: {

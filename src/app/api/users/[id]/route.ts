@@ -33,28 +33,47 @@ export async function PUT(
   const body = await request.json();
 
   const validStatuses = ["pending", "approved", "restricted"];
+  const validRoles = ["admin", "user"];
+
   if (body.status && !validStatuses.includes(body.status)) {
     return NextResponse.json({ error: "Invalid status" }, { status: 400 });
   }
-
-  // Get current user before update to check status change
-  const current = await prisma.user.findUnique({ where: { id } });
-
-  const updated = await prisma.user.update({
-    where: { id },
-    data: {
-      ...(body.status && { status: body.status }),
-      ...(body.role && { role: body.role }),
-    },
-  });
-
-  // Send welcome email when newly approved
-  let emailSent = false;
-  if (body.status === "approved" && current?.status !== "approved") {
-    emailSent = await sendWelcomeEmail(updated);
+  if (body.role && !validRoles.includes(body.role)) {
+    return NextResponse.json({ error: "Invalid role" }, { status: 400 });
   }
 
-  return NextResponse.json({ ...updated, emailSent });
+  try {
+    // Get current user before update to check status change
+    const current = await prisma.user.findUnique({ where: { id } });
+    if (!current) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    const updated = await prisma.user.update({
+      where: { id },
+      data: {
+        ...(body.status && { status: body.status }),
+        ...(body.role && { role: body.role }),
+      },
+    });
+
+    // Send welcome email when newly approved
+    let emailSent = false;
+    let emailError = false;
+    if (body.status === "approved" && current.status !== "approved") {
+      emailSent = await sendWelcomeEmail(updated);
+      emailError = !emailSent;
+    }
+
+    return NextResponse.json({
+      ...updated,
+      emailSent,
+      ...(emailError && { warning: "User approved but welcome email failed to send" }),
+    });
+  } catch (error) {
+    console.error("[API] PUT /api/users/[id] failed:", error);
+    return NextResponse.json({ error: "Failed to update user" }, { status: 500 });
+  }
 }
 
 // Resend welcome email

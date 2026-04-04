@@ -29,5 +29,6 @@ export async function sendEmail(options: EmailOptions) {
     ...(options.bcc?.length && { bcc: options.bcc }),
   };
 
+  console.log("[Email] Sending from:", process.env.SENDGRID_FROM_EMAIL, "to:", options.to);
   await sgMail.send(msg);
 }

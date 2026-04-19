@@ -11,6 +11,7 @@ const navItems = [
   { href: "/portal/financial", label: "Financial", icon: "◊" },
   { href: "/portal/performances", label: "Performances", icon: "✦" },
   { href: "/portal/assets", label: "Assets", icon: "❖" },
+  { href: "/portal/assistant", label: "Assistant", icon: "✧" },
   { href: "/portal/bookings", label: "Bookings", icon: "◈" },
 ];
 

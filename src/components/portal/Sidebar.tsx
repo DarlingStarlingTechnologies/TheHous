@@ -115,6 +115,20 @@ export default function Sidebar() {
               </span>
               User Management
             </Link>
+            <Link
+              href="/portal/queue"
+              className={`flex items-center gap-3 px-3 py-2.5 rounded text-sm transition-all duration-200
+                ${
+                  pathname.startsWith("/portal/queue")
+                    ? "bg-gold/10 text-gold border border-gold/20"
+                    : "text-cream-dim hover:text-cream hover:bg-bg-card border border-transparent"
+                }`}
+            >
+              <span className={`text-xs ${pathname.startsWith("/portal/queue") ? "text-gold" : "text-cream-dim/50"}`}>
+                ◆
+              </span>
+              Directive Queue
+            </Link>
           </>
         )}
       </nav>

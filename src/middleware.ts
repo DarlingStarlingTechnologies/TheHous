@@ -6,5 +6,5 @@ const { auth } = NextAuth(authConfig);
 export default auth;
 
 export const config = {
-  matcher: ["/portal/:path*", "/login", "/api/((?!auth|contact).*)"],
+  matcher: ["/portal/:path*", "/login", "/api/((?!auth|contact|queue).*)"],
 };

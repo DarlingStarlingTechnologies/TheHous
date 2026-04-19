@@ -99,3 +99,37 @@ model Booking {
   @@index([dateTime])
   @@index([createdAt])
 }
+
+model Directive {
+  id          String           @id @default(cuid())
+  instruction String
+  status      String           @default("pending")
+  targetPath  String?
+  branch      String?
+  metadata    Json?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  claimedAt   DateTime?
+  startedAt   DateTime?
+  completedAt DateTime?
+  result      DirectiveResult?
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model DirectiveResult {
+  id          String   @id @default(cuid())
+  directiveId String   @unique
+  directive   Directive @relation(fields: [directiveId], references: [id], onDelete: Cascade)
+  success     Boolean
+  exitCode    Int?
+  stdout      String
+  stderr      String
+  summary     String
+  startedAt   DateTime
+  completedAt DateTime
+  durationMs  Int
+  truncated   Boolean  @default(false)
+  error       String?
+}

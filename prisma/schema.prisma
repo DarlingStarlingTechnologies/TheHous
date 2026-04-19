@@ -100,6 +100,93 @@ model Booking {
   @@index([createdAt])
 }
 
+model Performance {
+  id          String   @id @default(cuid())
+  title       String
+  persona     String?
+  venue       String?
+  date        DateTime
+  hoursWorked Float?
+  type        String   @default("featured")
+  season      String   @default("standard")
+  status      String   @default("scheduled")
+  brandScore  Int?
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  incomes     PerformanceIncome[]
+  expenses    PerformanceExpense[]
+  assetUsages AssetUsage[]
+
+  @@index([date])
+  @@index([status])
+  @@index([persona])
+  @@index([type])
+  @@index([season])
+}
+
+model PerformanceIncome {
+  id            String      @id @default(cuid())
+  performanceId String
+  performance   Performance @relation(fields: [performanceId], references: [id], onDelete: Cascade)
+  category      String
+  amount        Float
+  isProjected   Boolean     @default(false)
+  notes         String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([performanceId])
+  @@index([category])
+}
+
+model PerformanceExpense {
+  id            String      @id @default(cuid())
+  performanceId String
+  performance   Performance @relation(fields: [performanceId], references: [id], onDelete: Cascade)
+  category      String
+  amount        Float
+  isProjected   Boolean     @default(false)
+  notes         String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([performanceId])
+  @@index([category])
+}
+
+model Asset {
+  id           String       @id @default(cuid())
+  name         String
+  category     String
+  purchaseCost Float
+  purchaseDate DateTime
+  expectedUses Int          @default(10)
+  status       String       @default("active")
+  notes        String?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  usages AssetUsage[]
+
+  @@index([category])
+  @@index([status])
+}
+
+model AssetUsage {
+  id            String      @id @default(cuid())
+  performanceId String
+  performance   Performance @relation(fields: [performanceId], references: [id], onDelete: Cascade)
+  assetId       String
+  asset         Asset       @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+
+  @@unique([performanceId, assetId])
+  @@index([performanceId])
+  @@index([assetId])
+}
+
 model Directive {
   id          String           @id @default(cuid())
   instruction String

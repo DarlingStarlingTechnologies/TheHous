@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import OddsAIPromo from "@/components/OddsAIPromo";
 import StarlingMediaToolsPromo from "@/components/StarlingMediaToolsPromo";
+import UpcomingShowBanner from "@/components/UpcomingShowBanner";
+
+// Re-render hourly so the upcoming-show banner can self-hide after the event.
+export const revalidate = 3600;
 
 function Ornament() {
   return (
@@ -16,6 +20,8 @@ function Ornament() {
 export default function LandingPage() {
   return (
     <div className="min-h-screen flex flex-col bg-bg-deep">
+      <UpcomingShowBanner />
+
       {/* Hero — full-bleed image */}
       <section className="relative min-h-screen flex items-end justify-center overflow-hidden">
         {/* Logo — top left */}

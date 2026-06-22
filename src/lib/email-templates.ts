@@ -6,10 +6,10 @@ export function contactInquiryEmail(inquiry: {
   details: string | null;
 }): string {
   const typeLabels: Record<string, string> = {
-    "collaboration": "Collaboration",
-    "software-development": "Software Development",
+    "software-development": "New Project / Build",
+    "collaboration": "Collaboration / Partnership",
+    "ecosystem-tools": "Product Access / Early Access",
     "booking-talent": "Booking Talent",
-    "ecosystem-tools": "Ecosystem Tools",
   };
   const typeLabel = typeLabels[inquiry.inquiryType] || inquiry.inquiryType;
 
@@ -159,10 +159,10 @@ export function welcomeEmail(userName: string | null): string {
                       Dear ${name},
                     </p>
                     <p style="margin: 0 0 20px; color: #9a9080; font-size: 15px; line-height: 1.7;">
-                      Your access to the Hous of The Darling Starling has been approved. You are now cleared to enter the private portal.
+                      Your access to the Hous of The Darling Starling portal has been approved. You are now cleared to sign in.
                     </p>
                     <p style="margin: 0 0 28px; color: #9a9080; font-size: 15px; line-height: 1.7;">
-                      The Hous is a living creative universe — still being built, still being shaped. As an approved member, you have a seat inside while the walls go up. What you see is early. What comes next will be worth the wait.
+                      This is the private workspace behind Starling Labs and the Hous — where projects, products, and the work in progress live. Welcome in.
                     </p>
 
                     <!-- CTA Button -->

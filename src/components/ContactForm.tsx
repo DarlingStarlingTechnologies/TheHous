@@ -4,10 +4,9 @@ import { useState } from "react";
 
 const inquiryTypes = [
   { value: "", label: "Select type of inquiry" },
-  { value: "collaboration", label: "Collaboration" },
-  { value: "software-development", label: "Software Development" },
-  { value: "booking-talent", label: "Booking Talent" },
-  { value: "ecosystem-tools", label: "Access to Ecosystem Tools" },
+  { value: "software-development", label: "New Project / Build" },
+  { value: "collaboration", label: "Collaboration / Partnership" },
+  { value: "ecosystem-tools", label: "Product Access / Early Access" },
 ];
 
 const inputClass =
@@ -299,197 +298,14 @@ export default function ContactForm() {
         </div>
       )}
 
-      {/* Booking Talent Fields */}
-      {t === "booking-talent" && (
-        <div className="space-y-5 animate-fade-in" style={{ animationDuration: "0.3s", animationFillMode: "forwards" }}>
-          <div>
-            <p className={labelClass}>Select Performer</p>
-            <div className="space-y-3">
-              {[
-                {
-                  id: "anastasia-starling",
-                  name: "Anastasia Starling",
-                  photo: "/anastasia-starling.jpg",
-                  house: "Rumor's Nightclub",
-                  division: "Amateur (Amcab)",
-                  titles: [] as string[],
-                },
-              ].map((performer) => {
-                const selected = form.details.performer === performer.id;
-                return (
-                  <button
-                    type="button"
-                    key={performer.id}
-                    onClick={() => setForm(setDetail(form, "performer", selected ? "" : performer.id))}
-                    className={`w-full flex items-center gap-4 p-4 rounded-lg border text-left transition-all duration-200 ${
-                      selected
-                        ? "bg-gold/10 border-gold/30"
-                        : "bg-bg-card border-border hover:border-border-light"
-                    }`}
-                  >
-                    <div className="relative w-16 h-20 rounded overflow-hidden flex-shrink-0 border border-border">
-                      <img
-                        src={performer.photo}
-                        alt={performer.name}
-                        className="w-full h-full object-cover object-[center_50%]"
-                      />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className={`font-serif text-lg tracking-wide ${selected ? "text-gold" : "text-white"}`}>
-                        {performer.name}
-                      </p>
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1">
-                        <span className="text-cream-dim/50 text-xs">{performer.house}</span>
-                        <span className="text-cream-dim/20 text-xs">|</span>
-                        <span className="text-cream-dim/50 text-xs">{performer.division}</span>
-                      </div>
-                      {performer.titles.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mt-2">
-                          {performer.titles.map((title) => (
-                            <span
-                              key={title}
-                              className="text-[10px] uppercase tracking-widest text-gold-dim bg-gold/5 border border-gold/10 rounded-full px-2.5 py-0.5"
-                            >
-                              {title}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                    <div className={`w-5 h-5 rounded-full border flex items-center justify-center flex-shrink-0 text-[10px] ${
-                      selected ? "border-gold/50 bg-gold/20 text-gold" : "border-border-light"
-                    }`}>
-                      {selected && "✓"}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label htmlFor="book-event" className={labelClass}>Event Type</label>
-              <select
-                id="book-event"
-                value={form.details.eventType || ""}
-                onChange={(e) => setForm(setDetail(form, "eventType", e.target.value))}
-                className={`${inputClass} appearance-none`}
-                style={selectStyle}
-              >
-                <option value="" className="bg-bg-card text-cream">Select...</option>
-                <option value="general-show" className="bg-bg-card text-cream">General Show</option>
-                <option value="feature-show" className="bg-bg-card text-cream">Feature Show</option>
-                <option value="private" className="bg-bg-card text-cream">Private Event</option>
-                <option value="corporate" className="bg-bg-card text-cream">Corporate Event</option>
-                <option value="festival" className="bg-bg-card text-cream">Festival / Concert</option>
-                <option value="venue" className="bg-bg-card text-cream">Venue Residency</option>
-                <option value="media" className="bg-bg-card text-cream">Media / Film / TV</option>
-                <option value="other" className="bg-bg-card text-cream">Other</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="book-date" className={labelClass}>Event Date</label>
-              <input
-                id="book-date"
-                type="date"
-                value={form.details.eventDate || ""}
-                onChange={(e) => setForm(setDetail(form, "eventDate", e.target.value))}
-                className={inputClass}
-              />
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label htmlFor="book-location" className={labelClass}>Venue / Location</label>
-              <input
-                id="book-location"
-                type="text"
-                value={form.details.venue || ""}
-                onChange={(e) => setForm(setDetail(form, "venue", e.target.value))}
-                className={inputClass}
-                placeholder="Venue name or city"
-              />
-            </div>
-            <div>
-              <label htmlFor="book-audience" className={labelClass}>Expected Audience</label>
-              <select
-                id="book-audience"
-                value={form.details.audienceSize || ""}
-                onChange={(e) => setForm(setDetail(form, "audienceSize", e.target.value))}
-                className={`${inputClass} appearance-none`}
-                style={selectStyle}
-              >
-                <option value="" className="bg-bg-card text-cream">Select...</option>
-                <option value="intimate" className="bg-bg-card text-cream">Intimate (under 50)</option>
-                <option value="small" className="bg-bg-card text-cream">Small (50–200)</option>
-                <option value="medium" className="bg-bg-card text-cream">Medium (200–1,000)</option>
-                <option value="large" className="bg-bg-card text-cream">Large (1,000+)</option>
-              </select>
-            </div>
-          </div>
-          {/* Budget — contextual based on event type */}
-          {form.details.eventType === "festival" ? (
-            <p className="text-cream-dim/50 text-sm italic px-1">
-              Festival and concert bookings require direct discussion. Please include details in the notes below.
-            </p>
-          ) : form.details.eventType && (
-            <div>
-              <label htmlFor="book-budget" className={labelClass}>
-                Budget Range
-                {form.details.eventType === "general-show" && (
-                  <span className="normal-case tracking-normal text-cream-dim/40 ml-2">
-                    (standard rate: $50 + tips)
-                  </span>
-                )}
-              </label>
-              <select
-                id="book-budget"
-                value={form.details.budget || ""}
-                onChange={(e) => setForm(setDetail(form, "budget", e.target.value))}
-                className={`${inputClass} appearance-none`}
-                style={selectStyle}
-              >
-                {form.details.eventType === "general-show" ? (
-                  <>
-                    <option value="" className="bg-bg-card text-cream">Select...</option>
-                    <option value="standard" className="bg-bg-card text-cream">Standard ($50 + tips)</option>
-                    <option value="50-100" className="bg-bg-card text-cream">$50 – $100</option>
-                    <option value="100-200" className="bg-bg-card text-cream">$100 – $200</option>
-                    <option value="200-plus" className="bg-bg-card text-cream">$200+</option>
-                  </>
-                ) : form.details.eventType === "feature-show" ? (
-                  <>
-                    <option value="" className="bg-bg-card text-cream">Select...</option>
-                    <option value="200-500" className="bg-bg-card text-cream">$200 – $500</option>
-                    <option value="500-1000" className="bg-bg-card text-cream">$500 – $1,000</option>
-                    <option value="1000-2500" className="bg-bg-card text-cream">$1,000 – $2,500</option>
-                    <option value="2500-plus" className="bg-bg-card text-cream">$2,500+</option>
-                    <option value="discuss" className="bg-bg-card text-cream">Let's Discuss</option>
-                  </>
-                ) : (
-                  <>
-                    <option value="" className="bg-bg-card text-cream">Select...</option>
-                    <option value="under-500" className="bg-bg-card text-cream">Under $500</option>
-                    <option value="500-1500" className="bg-bg-card text-cream">$500 – $1,500</option>
-                    <option value="1500-5000" className="bg-bg-card text-cream">$1,500 – $5,000</option>
-                    <option value="5000-plus" className="bg-bg-card text-cream">$5,000+</option>
-                    <option value="discuss" className="bg-bg-card text-cream">Let's Discuss</option>
-                  </>
-                )}
-              </select>
-            </div>
-          )}
-        </div>
-      )}
-
       {/* Ecosystem Tools Fields */}
       {t === "ecosystem-tools" && (
         <div className="space-y-5 animate-fade-in" style={{ animationDuration: "0.3s", animationFillMode: "forwards" }}>
           <p className="text-cream-dim/40 text-sm -mt-1">
-            These tools are currently in development and will be available as they launch. Let us know which ones you're interested in and we'll notify you when access becomes available.
+            Our products are currently in development and will be available as they launch. Let us know which one you're interested in and we'll notify you when early access becomes available.
           </p>
           <div>
-            <label htmlFor="tools-interest" className={labelClass}>Tool of Interest</label>
+            <label htmlFor="tools-interest" className={labelClass}>Product of Interest</label>
             <select
               id="tools-interest"
               value={form.details.tool || ""}
@@ -497,16 +313,15 @@ export default function ContactForm() {
               className={`${inputClass} appearance-none`}
               style={selectStyle}
             >
-              <option value="" className="bg-bg-card text-cream">Select a tool (optional)</option>
-              <option value="oddsai" className="bg-bg-card text-cream">OddsAI</option>
-              <option value="starling-media" className="bg-bg-card text-cream">Starling Premium Media Tools</option>
-              <option value="big-green-machine" className="bg-bg-card text-cream">The Big Green Machine</option>
-              <option value="slayjar" className="bg-bg-card text-cream">SlayJar</option>
-              <option value="character-expressions" className="bg-bg-card text-cream">Character Expressions & AI Canon Builder</option>
+              <option value="" className="bg-bg-card text-cream">Select a product (optional)</option>
+              <option value="toddai" className="bg-bg-card text-cream">ToddAI</option>
+              <option value="starling-music" className="bg-bg-card text-cream">Starling Premium Music</option>
+              <option value="liquid-candy" className="bg-bg-card text-cream">Liquid Candy</option>
+              <option value="the-nest" className="bg-bg-card text-cream">The Nest</option>
             </select>
             {form.details.tool && (
               <p className="mt-2 text-amber-400/70 text-xs">
-                This tool is not yet live. It is currently in development. Leave your details and we'll reach out when it becomes available.
+                This product is not yet live. It is currently in development. Leave your details and we'll reach out when it becomes available.
               </p>
             )}
           </div>

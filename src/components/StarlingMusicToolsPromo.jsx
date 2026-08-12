@@ -69,10 +69,14 @@ export default function StarlingMusicToolsPromo() {
           normalize, trim, pitch, tempo, mix — then deliver the final version
           to your show director without ever leaving the app.
         </p>
+        {/* Every feature named here is deliberately non-AI. The app has an
+            AI persona/chat layer, but it is not shipping in the release, so
+            it must not appear in the promo. */}
         <p className="text-cream-dim/40 text-xs leading-relaxed max-w-md mx-auto mb-8">
-          Show-day workflows, an AI consultant team to talk numbers through
-          with, and a prep checklist that counts down with you. Designed
-          backstage, for backstage.
+          Search across every show you have ever built, drill choreography
+          against an A-B looping video player, and hand off to a prep
+          checklist that takes over when the date is under two weeks out.
+          Designed backstage, for backstage.
         </p>
 
         {/* Divider */}

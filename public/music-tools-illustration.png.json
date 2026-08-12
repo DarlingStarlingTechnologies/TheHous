@@ -1,0 +1,25 @@
+{
+  "generatedBy": "openai",
+  "model": "gpt-image-1",
+  "command": "generate",
+  "prompt": "Flat vector poster illustration on a fully transparent background. A stylized audio mixing console seen at a slight three-quarter angle: a bank of vertical faders and round knobs, rendered in smooth gradients of peach, apricot and warm gold, with a soft lavender-to-magenta glowing rim light along its edges. Rising from the console, an elegant glowing waveform ribbon arcs upward and to the right in hot magenta and violet, breaking into small drifting particles and a few four-pointed sparkle stars. Behind the console, a faint radial burst of thin concentric arc lines in muted violet, like stage light rays. Elegant, glamorous, theatrical, high-end vector art with clean edges and subtle inner gradients, luminous neon accents. Centered composition with generous empty margins. Absolutely no text, no letters, no numbers, no words, no labels, no watermark, no user interface, no screen, no background rectangle — the background must be completely transparent.",
+  "inputs": [],
+  "mask": null,
+  "size": "1024x1024",
+  "quality": "high",
+  "background": "transparent",
+  "created": "2026-08-12T16:12:33.040Z",
+  "usage": {
+    "input_tokens": 194,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 194
+    },
+    "output_tokens": 4160,
+    "output_tokens_details": {
+      "image_tokens": 4160,
+      "text_tokens": 0
+    },
+    "total_tokens": 4354
+  }
+}

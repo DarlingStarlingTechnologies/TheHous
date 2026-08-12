@@ -9,7 +9,7 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen bg-bg-deep">
       <header className="px-6 py-6 flex items-center justify-between max-w-4xl mx-auto">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <img src="/logo.png" alt="" className="w-10 h-10 opacity-80 group-hover:opacity-100 transition-opacity" />
+          <img src="/hous-eye.svg" alt="" className="w-12 h-10 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
           <span className="font-serif text-lg text-gold/80 group-hover:text-gold transition-colors tracking-wide">
             The Hous
           </span>

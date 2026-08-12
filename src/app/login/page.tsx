@@ -52,9 +52,9 @@ function LoginForm() {
       <div className="w-full max-w-md">
         <div className="text-center mb-12 opacity-0 animate-fade-in" style={{ animationFillMode: "forwards" }}>
           <img
-            src="/logo.png"
+            src="/hous-eye.svg"
             alt="Hous of The Darling Starling"
-            className="w-20 h-20 mx-auto mb-6 opacity-90"
+            className="w-28 h-20 object-contain mx-auto mb-6 opacity-90"
           />
           <h1 className="font-serif text-4xl font-light text-gold tracking-wide">
             The Hous

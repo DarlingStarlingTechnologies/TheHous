@@ -26,7 +26,7 @@ export default function Sidebar() {
       {/* Branding */}
       <div className="p-6 pb-5 border-b border-border">
         <Link href="/portal" className="flex items-center gap-4">
-          <img src="/logo.png" alt="" className="w-14 h-14 opacity-90 flex-shrink-0" />
+          <img src="/hous-eye.svg" alt="" className="w-16 h-12 object-contain opacity-90 flex-shrink-0" />
           <div>
             <h1 className="font-serif text-xl font-light text-gold tracking-wide leading-tight">
               Hous of The

@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   description:
     "The first public home of a living creative universe. Currently in development.",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/hous-eye-512.png",
+    apple: "/hous-eye-192.png",
   },
   openGraph: {
     title: "Hous of The Darling Starling",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       "The first public home of a living creative universe. Currently in development.",
     type: "website",
     url: "https://housofthedarlingstarling.com",
-    images: [{ url: "/logo.png", width: 512, height: 512 }],
+    images: [{ url: "/hous-eye-512.png", width: 512, height: 512 }],
   },
 };
 

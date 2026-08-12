@@ -28,9 +28,11 @@ export default function LandingPage() {
         {/* Logo — top left */}
         <div className="absolute top-5 left-6 z-20 opacity-0 animate-fade-in-slow delay-500" style={{ animationFillMode: "forwards" }}>
           <Image
-            src="/logo.png"
+            src="/hous-eye.svg"
             alt="Hous of The Darling Starling"
-            width={52}
+            /* The mark is 1.4:1, not square — these must stay in that ratio
+               or the eye squashes. */
+            width={73}
             height={52}
             className="opacity-80 hover:opacity-100 transition-opacity duration-500"
           />
@@ -142,8 +144,11 @@ export default function LandingPage() {
               <div className="relative w-72 h-[30rem] sm:w-80 sm:h-[34rem] rounded-lg overflow-hidden border border-border">
                 <Image
                   src="/anastasia-starling.jpg"
-                  alt="Anastasia Starling"
+                  alt="Anastasia Starling in a bright pink rhinestone mermaid gown on stage against a pink sequin curtain"
                   fill
+                  /* 1328x1898 (0.70) inside a 0.60 frame, so object-cover
+                     matches on height and crops the sides — the vertical 20%
+                     is a no-op here, kept for whatever photo lands next. */
                   className="object-cover object-[center_20%]"
                   sizes="(max-width: 1024px) 288px, 320px"
                 />

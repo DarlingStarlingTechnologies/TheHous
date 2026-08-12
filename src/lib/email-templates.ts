@@ -40,7 +40,7 @@ export function contactInquiryEmail(inquiry: {
           <!-- Logo -->
           <tr>
             <td align="center" style="padding-bottom: 32px;">
-              <img src="https://housofthedarlingstarling.com/logo.png" alt="Hous of The Darling Starling" width="72" height="72" style="display: block; border: 0;" />
+              <img src="https://housofthedarlingstarling.com/hous-eye-email.png" alt="Hous of The Darling Starling" width="101" height="72" style="display: block; border: 0;" />
             </td>
           </tr>
 
@@ -123,7 +123,7 @@ export function welcomeEmail(userName: string | null): string {
           <!-- Logo -->
           <tr>
             <td align="center" style="padding-bottom: 32px;">
-              <img src="https://housofthedarlingstarling.com/logo.png" alt="Hous of The Darling Starling" width="72" height="72" style="display: block; border: 0;" />
+              <img src="https://housofthedarlingstarling.com/hous-eye-email.png" alt="Hous of The Darling Starling" width="101" height="72" style="display: block; border: 0;" />
             </td>
           </tr>
 

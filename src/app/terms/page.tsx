@@ -75,7 +75,7 @@ export default function TermsOfServicePage() {
               All content on the Site — including but not limited to text, images, logos, graphics,
               design, and software — is the property of Hous of The Darling Starling LLC and is
               protected by copyright, trademark, and other intellectual property laws. The name
-              &quot;Hous of The Darling Starling,&quot; the starling logo, and all associated marks are
+              &quot;Hous of The Darling Starling,&quot; the eye mark, and all associated marks are
               trademarks of Hous of The Darling Starling LLC.
             </p>
           </section>

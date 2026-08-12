@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import OddsAIPromo from "@/components/OddsAIPromo";
-import StarlingMediaToolsPromo from "@/components/StarlingMediaToolsPromo";
+import LiquidCandyPromo from "@/components/LiquidCandyPromo";
+import LyricLabPromo from "@/components/LyricLabPromo";
 import UpcomingShowBanner from "@/components/UpcomingShowBanner";
 
 // Re-render hourly so the upcoming-show banner can self-hide after the event.
@@ -52,7 +53,7 @@ export default function LandingPage() {
         <div className="absolute inset-0 opacity-0 animate-fade-in-slow delay-300" style={{ animationDuration: "3s", animationFillMode: "forwards" }}>
           <Image
             src="/hous-hero.png"
-            alt="Hous of The Darling Starling — an elegant dark estate illuminated at twilight"
+            alt="A lantern-lit road winding through dark countryside toward the distant, hazy silhouette of the Hous, with searchlight beams sweeping the night sky above it"
             fill
             priority
             className="object-cover object-center"
@@ -179,6 +180,20 @@ export default function LandingPage() {
                   her name for a reason.
                 </p>
               </div>
+
+              {/* Her own site — performances, gallery and booking live there. */}
+              <div className="mt-8">
+                <a
+                  href="https://anastasiastarling.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-8 py-3 border border-gold/30 rounded text-gold text-sm
+                             tracking-widest uppercase hover:bg-gold/10 hover:border-gold/50
+                             transition-all duration-300"
+                >
+                  Visit anastasiastarling.com
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -193,7 +208,7 @@ export default function LandingPage() {
             </span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl font-light text-white mb-10">
-            First Light
+            What&apos;s Being Built
           </h2>
           <div className="space-y-6 text-cream-dim leading-relaxed text-lg max-w-2xl mx-auto">
             <p>
@@ -208,9 +223,10 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            <LiquidCandyPromo />
+            <LyricLabPromo />
             <OddsAIPromo />
-            <StarlingMediaToolsPromo />
           </div>
         </div>
       </section>

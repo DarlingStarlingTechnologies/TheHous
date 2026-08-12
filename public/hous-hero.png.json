@@ -1,0 +1,25 @@
+{
+  "generatedBy": "openai",
+  "model": "gpt-image-1",
+  "command": "generate",
+  "prompt": "Cinematic wide landscape at deep twilight, elegant and mysterious. In the far distance on a low rise sits the dark SILHOUETTE of a grand manor house, unlit and deliberately soft and out of focus, veiled in atmospheric haze so its shape is only suggested, never clearly revealed. A narrow road winds through dark open countryside from the foreground toward that distant house, curving as it goes; the road is lined on both sides with small warm golden lanterns that trace a clear lighted path into the distance. Several pale theatrical searchlight beams sweep upward into the night sky from behind the house, crossing each other like a premiere or gala announcing that something important is beginning. Near the distant house, faint elongated shadows and soft glowing motion blur imply movement, bustle and activity, but no figures are visible. Deep midnight blue and near-black palette with warm gold accents from the lantern path. Moody, high-end editorial poster quality, atmospheric depth, empty foreground suitable for overlaid text. No people, no text, no lettering, no signage, no watermarks.",
+  "inputs": [],
+  "mask": null,
+  "size": "1536x1024",
+  "quality": "high",
+  "background": "auto",
+  "created": "2026-08-12T15:48:58.535Z",
+  "usage": {
+    "input_tokens": 221,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 221
+    },
+    "output_tokens": 6208,
+    "output_tokens_details": {
+      "image_tokens": 6208,
+      "text_tokens": 0
+    },
+    "total_tokens": 6429
+  }
+}

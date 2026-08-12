@@ -2,8 +2,8 @@ import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata = {
-  title: "Start a project — Starling Labs",
-  description: "Tell Starling Labs about your project, partnership, or product interest.",
+  title: "Inquiries — Hous of The Darling Starling",
+  description: "Get in touch with Hous of The Darling Starling.",
 };
 
 export default function ContactPage() {
@@ -12,9 +12,9 @@ export default function ContactPage() {
       {/* Header */}
       <header className="px-6 py-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <img src="/logo.png" alt="" className="w-9 h-9 opacity-90" />
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-cream-dim group-hover:text-white transition-colors">
-            Starling Labs
+          <img src="/logo.png" alt="" className="w-10 h-10 opacity-80 group-hover:opacity-100 transition-opacity" />
+          <span className="font-serif text-lg text-gold/80 group-hover:text-gold transition-colors tracking-wide">
+            The Hous
           </span>
         </Link>
         <Link
@@ -29,12 +29,12 @@ export default function ContactPage() {
       <main className="flex-1 flex items-center justify-center px-6 py-16">
         <div className="w-full max-w-2xl">
           <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
-              Let&apos;s talk
+            <h1 className="font-serif text-4xl sm:text-5xl font-light text-white mb-4">
+              Inquiries
             </h1>
             <p className="text-cream-dim leading-relaxed text-lg max-w-lg mx-auto">
-              Tell us about your project, a partnership, or a product you&apos;d
-              like early access to. We read every inquiry.
+              For questions, collaborations, or to express interest in the world
+              being built here, you are welcome to reach out.
             </p>
           </div>
           <ContactForm />

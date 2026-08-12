@@ -1,21 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  /* Cool, neutral dark surfaces — modern software-firm feel */
-  --bg-deep: #0a0b0d;
-  --bg-dark: #0e1014;
-  --bg-card: #14171c;
-  --bg-elevated: #1a1e25;
-  --border: #23272f;
-  --border-light: #2f343d;
-  /* Gold retained as the brand tie to the Hous / logo */
+  --bg-deep: #080808;
+  --bg-dark: #0c0c0c;
+  --bg-card: #141414;
+  --bg-elevated: #1a1a1a;
+  --border: #222222;
+  --border-light: #2e2e2e;
   --gold: #c9a84c;
-  --gold-light: #e2c878;
+  --gold-light: #dfc06e;
   --gold-dim: #8b7535;
-  /* Cool light neutrals replace warm cream */
-  --cream: #e3e6ec;
-  --cream-dim: #98a0ac;
-  --white: #f6f8fb;
+  --cream: #e8dcc8;
+  --cream-dim: #9a9080;
+  --white: #f5f0e8;
 }
 
 @theme inline {
@@ -33,7 +30,6 @@
   --color-white: var(--white);
   --font-serif: var(--font-cormorant);
   --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
@@ -89,23 +85,6 @@ body {
 
 .animate-shimmer {
   animation: shimmer 3s ease-in-out infinite;
-}
-
-/* Subtle technical grid backdrop for the modern Labs surfaces */
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-
-/* Soft gold glow behind the hero */
-.glow-gold {
-  background: radial-gradient(
-    600px circle at 50% 0%,
-    rgba(201, 168, 76, 0.10),
-    transparent 70%
-  );
 }
 
 .delay-100 { animation-delay: 0.1s; }

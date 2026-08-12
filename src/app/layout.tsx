@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -15,27 +15,18 @@ const inter = Inter({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
-});
-
-const TITLE = "Starling Labs — Software, engineered with intention";
-const DESCRIPTION =
-  "Starling Labs is the software division of Hous of The Darling Starling. We design and build software products — and the systems behind them — for ourselves and for our clients.";
-
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
+  title: "Hous of The Darling Starling",
+  description:
+    "The first public home of a living creative universe. Currently in development.",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
   },
   openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
+    title: "Hous of The Darling Starling",
+    description:
+      "The first public home of a living creative universe. Currently in development.",
     type: "website",
     url: "https://housofthedarlingstarling.com",
     images: [{ url: "/logo.png", width: 512, height: 512 }],
@@ -50,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

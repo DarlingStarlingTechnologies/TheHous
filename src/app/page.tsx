@@ -148,7 +148,8 @@ export default function LandingPage() {
               <p className="mt-3 text-sm leading-relaxed text-cream-dim">
                 We take on a small number of client builds — from MVP to full
                 product — and carry them the whole way: architecture,
-                requirements, testing, compliance, and launch.
+                requirements, testing, compliance, and launch. The Nest is one
+                of them.
               </p>
             </div>
           </div>
@@ -192,38 +193,38 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Latest tool — Lyric Lab */}
-          <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-bg-card">
-            <Image
-              src="/lyric-lab-promo.png"
-              alt="Lyric Lab — a lip-sync practice studio. Time-synced lyrics and evidence-based drills that help performers memorize any song."
-              width={3200}
-              height={1800}
-              className="h-auto w-full"
-            />
-            <div className="border-t border-border px-6 py-6 sm:px-8 sm:py-7">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex items-center gap-3">
-                  <h3 className="text-lg font-medium text-white">Lyric Lab</h3>
-                  <span className="rounded-full border border-gold/40 bg-gold/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-gold">
-                    In Development
-                  </span>
-                </div>
-                <p className="font-mono text-xs tracking-wide text-cream-dim/70">
-                  Our latest tool · a native Android app in active development
-                </p>
+          {/* Client work — The Nest */}
+          <div className="mt-6 grid overflow-hidden rounded-2xl border border-border bg-bg-card lg:grid-cols-2">
+            <a
+              href="https://nestmuskegon.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block aspect-[16/10] overflow-hidden border-b border-border lg:border-b-0 lg:border-r"
+            >
+              <Image
+                src="/the-nest-preview.png"
+                alt="The Nest — marketing website for an LGBTQ+ nightclub in Muskegon, MI, built by Starling Labs"
+                fill
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </a>
+            <div className="flex flex-col p-8 sm:p-10">
+              <div className="mb-5 flex items-center gap-3">
+                <h3 className="text-xl font-medium text-white">The Nest</h3>
+                <span className="rounded-full border border-border-light bg-white/[0.02] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-cream-dim">
+                  Client Project
+                </span>
               </div>
-              <p className="mt-5 max-w-3xl leading-relaxed text-cream-dim">
-                Lyric Lab is a lip-sync practice studio for performers. Pick a
-                song from your phone or cloud storage and it pulls time-synced
-                lyrics, then runs evidence-based memorization drills against the
-                audio — karaoke highlighting, section looping, pitch-corrected
-                slow-down, progressive word-hiding, and a test mode that flags
-                exactly what to drill next. Everything caches locally, so a song
-                works offline after the first fetch.
+              <p className="flex-1 leading-relaxed text-cream-dim">
+                A statically-generated marketing site for The Nest, an LGBTQ+
+                nightclub in Muskegon, MI — drink specials, weekly schedule, and
+                featured drag events. Shipped with a full SEO and social layer
+                (Open Graph, NightClub JSON-LD, sitemap, PWA manifest) as a fast,
+                fully static Next.js site on Vercel.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
-                {["Own Product", "React Native", "Expo", "Android"].map((tag) => (
+                {["Client Work", "Next.js", "SEO", "Vercel"].map((tag) => (
                   <span
                     key={tag}
                     className="rounded-md border border-border-light/60 px-2.5 py-1 font-mono text-[10px] tracking-wide text-cream-dim/70"
@@ -232,6 +233,15 @@ export default function LandingPage() {
                   </span>
                 ))}
               </div>
+              <a
+                href="https://nestmuskegon.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-gold transition-colors hover:text-gold-light"
+              >
+                Visit The Nest
+                <span aria-hidden="true">↗</span>
+              </a>
             </div>
           </div>
         </div>

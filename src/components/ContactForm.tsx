@@ -317,7 +317,7 @@ export default function ContactForm() {
               <option value="toddai" className="bg-bg-card text-cream">ToddAI</option>
               <option value="starling-music" className="bg-bg-card text-cream">Starling Premium Music</option>
               <option value="liquid-candy" className="bg-bg-card text-cream">Liquid Candy</option>
-              <option value="lyric-lab" className="bg-bg-card text-cream">Lyric Lab</option>
+              <option value="the-nest" className="bg-bg-card text-cream">The Nest</option>
             </select>
             {form.details.tool && (
               <p className="mt-2 text-amber-400/70 text-xs">

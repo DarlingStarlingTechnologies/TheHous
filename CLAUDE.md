@@ -6,7 +6,7 @@ The live hosted site at `housofthedarlingstarling.com`. The **public face is Sta
 
 This is **not** the full Hous creative universe — do not build canon, multiplayer worlds, or performance halls. Note: this site was **rebranded away from a "creative universe / drag performance" framing**. Anastasia Starling and all performance/booking content have been removed from the public face. The sole employee is **Anthony Glines** (lead architect & founder); the firm's differentiator is an AI-amplified, single-architect workflow (nothing lost, complete requirements, rigorous testing, legal/subject-matter + 50-state geo-compliance).
 
-Public products on the landing page: **Liquid Candy** (flagship AI mixologist app, coming soon to the App Store / Google Play) and **Lyric Lab** (a lip-sync practice studio — native Android app in active development; repo lives separately at `C:\Users\asgli\Projects\derple`). **The Nest** (client marketing site, nestmuskegon.com) was previously showcased but has been **removed from the public face**. **ToddAI** (formerly OddsAI) and **Starling Premium Music** are early-concept ideas that may be scrapped or kept internal — deliberately **not** shown publicly.
+Public products on the landing page: **Liquid Candy** (flagship AI mixologist app, coming soon to the App Store / Google Play) and **The Nest** (shipped client marketing site, nestmuskegon.com). **ToddAI** (formerly OddsAI) and **Starling Premium Music** are early-concept ideas that may be scrapped or kept internal — deliberately **not** shown publicly.
 
 ## Stack
 
@@ -91,7 +91,7 @@ Modernized toward a clean software-firm look (the public face). Token **names** 
 - Auth config MUST be split into edge-safe (`auth.config.ts`) and full (`auth.ts`) — importing Prisma in middleware causes Edge Runtime errors.
 - The `middleware.ts` convention is deprecated in Next.js 16 (replaced by `proxy.ts`) but still works. Migration not urgent.
 - Contact form honeypot field + 3-second timing gate silently fake success for bots.
-- The Portfolio section in `src/app/page.tsx` uses two bespoke image showcases (no shared card component), both owned in-development apps: **Liquid Candy** as a full-width promo banner (`public/liquid-candy-promo.png`, the owner-supplied ad) with a "Coming Soon" caption bar, and **Lyric Lab** as a full-width promo banner (`public/lyric-lab-promo.png`) with an "In Development" badge, a summary paragraph, and feature tags. The Lyric Lab promo was composited from that app's own brand kit (`C:\Users\asgli\Projects\derple\Lyric_Lab_Asset_Package` — cosmic hero-card background + transparent gradient wordmark) via an HTML file rendered with headless Chrome at 2×. To re-render: build an HTML banner referencing those assets and run `chrome --headless=new --force-device-scale-factor=2 --window-size=1600,900 --screenshot=public/lyric-lab-promo.png file://<html>`. (The Nest client showcase was previously in this slot but has been removed from the public face.)
+- The Portfolio section in `src/app/page.tsx` uses two bespoke image showcases (no shared card component): **Liquid Candy** as a full-width promo banner (`public/liquid-candy-promo.png`, the owner-supplied ad) with a "Coming Soon" caption bar, and **The Nest** as an image+text showcase (`public/the-nest-preview.png`, a headless-Chrome screenshot of `the-nest-muskegon.vercel.app`) linking to nestmuskegon.com. To re-shoot the Nest preview: `chrome --headless=new --screenshot=public/the-nest-preview.png --window-size=1440,900 <url>` (the git-branch URL is behind Vercel deployment protection; use the production alias).
 - The portal still contains a **Bookings** model + CRUD (`/portal/bookings`, `/api/bookings`) left over from the performance era. Not surfaced on the public face; safe to keep or remove later.
 
 ## File Layout
@@ -138,6 +138,6 @@ prisma/
 public/
   logo.png                      # Starling logo
   liquid-candy-promo.png        # Liquid Candy advertising banner (flagship product showcase)
-  lyric-lab-promo.png           # Lyric Lab promo banner (composited from the derple brand kit)
+  the-nest-preview.png          # The Nest website screenshot (client showcase)
   hous-hero.png                 # Legacy hero image — no longer referenced by the landing page
 ```

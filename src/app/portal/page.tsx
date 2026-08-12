@@ -102,7 +102,7 @@ export default async function DashboardPage() {
           <p className="text-amber-400/80 text-xs uppercase tracking-widest mb-1">Future Integration</p>
           <p className="text-cream-dim/60 text-sm">
             Booking talent performer list is currently hardcoded. This will be managed dynamically
-            via Starling Premium Media Tools once that platform is live.
+            via Starling Premium Music Tools once that platform is live.
           </p>
         </div>
       )}

@@ -498,7 +498,7 @@ export default function ContactForm() {
               style={selectStyle}
             >
               <option value="" className="bg-bg-card text-cream">Select a tool (optional)</option>
-              <option value="oddsai" className="bg-bg-card text-cream">OddsAI</option>
+              <option value="starling-music" className="bg-bg-card text-cream">Starling Premium Music Tools</option>
               <option value="big-green-machine" className="bg-bg-card text-cream">The Big Green Machine</option>
               <option value="slayjar" className="bg-bg-card text-cream">SlayJar</option>
               <option value="character-expressions" className="bg-bg-card text-cream">Character Expressions & AI Canon Builder</option>

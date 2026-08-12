@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import OddsAIPromo from "@/components/OddsAIPromo";
 import LiquidCandyPromo from "@/components/LiquidCandyPromo";
 import LyricLabPromo from "@/components/LyricLabPromo";
+import StarlingMusicToolsPromo from "@/components/StarlingMusicToolsPromo";
 import UpcomingShowBanner from "@/components/UpcomingShowBanner";
 
 // Re-render hourly so the upcoming-show banner can self-hide after the event.
@@ -223,11 +223,13 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
             <LiquidCandyPromo />
             <LyricLabPromo />
-            <OddsAIPromo />
           </div>
+
+          {/* Full width — the only product taking beta sign-ups. */}
+          <StarlingMusicToolsPromo />
         </div>
       </section>
 
